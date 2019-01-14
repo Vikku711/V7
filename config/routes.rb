@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :products
+  root 'products#index'
+
   get 'products/index'
 
   get 'products/show'
@@ -13,8 +16,6 @@ Rails.application.routes.draw do
 
   get 'products/destroy'
 
-  resources :products
-  root 'products#index'
   mount Products::ProductsAPI => '/api/products'
 
   # The priority is based upon order of creation: first created -> highest priority.
