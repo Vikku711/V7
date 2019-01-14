@@ -4,11 +4,10 @@ class ProductsController < ApplicationController
   end
 
   def show
-    p "HELLO here"
     begin
       @product = Product.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
-      print e
+      puts e
       logger.error("Message for the log file #{e.message}")
       flash[:notice] = "Store error message"
       redirect_to(:action => 'index')
